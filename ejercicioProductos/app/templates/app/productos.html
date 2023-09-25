@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>producto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .caja-titulo{
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            text-align: center;
+            color: black;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            display: block;
+    
+        }
+
+        .caja-titulo_dos{
+            background-color: rgb(69, 67, 67);
+            padding: 5px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            display: block;
+    
+        }
+
+        .logo{
+            float:center;
+            margin: 20px 20px 20px 20px;
+            padding: 0px;
+            width: 150px;
+            height: auto;
+        }
+
+        .botonee{
+            background-color: rgb(55, 54, 54);
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.3 ease;
+     
+            width: 200px;
+            height: auto;
+            margin: 30px 30px 30px 30px;
+        }
+        .botonee:hover{
+            background-color: rgb(225, 221, 188);
+            color: black;
+        }
+        body{
+            background-color: #ffbd20;
+        }
+
+        .titulos_prod{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .imggg{
+            float:center;
+            margin: 20px 20px 20px 20px;
+            padding: 0px;
+            width: 350px;
+            height: 340px;
+        }
+
+        .card-body{
+            padding: 10px 10px 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="caja-titulo ">
+            <img src="{% static 'images/logo_uno.jpg' %}" alt="logo" class="logo">
+            <h1 class="display-5">UNIVERSO</h1>
+            <h1 class="display-3">CREATIVO</h1>
+        </div>
+
+
+    </header>
+    <main class="container mt-4">
+        <h2 class="mb-4 display-6 card-header titulos_prod text-center caja-titulo_dos">Nuestros Productos</h2>
+        <div class="row">
+            {% for producto in productos %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{% static producto.imagen %}" alt="{{ producto.imagen }}" class=" imggg ">
+                    <div class="card-body">
+                        <h3 class="card-title card-subtitle  titulos_prod">{{ producto.id }}</h3>
+                        <p class="card-text display-4 titulos_prod">{{ producto.nombre }}</p>
+                        <p class="card-text titulos_prod"><strong>Descripcion: </strong>{{ producto.descrip }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'index' %}" class="btn btn-secondary mb-4">Volver</a>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
